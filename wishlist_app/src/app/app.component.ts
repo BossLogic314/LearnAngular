@@ -21,8 +21,25 @@ export class AppComponent {
 
   newWishText : string = "";
 
+  keyPressedOnCreateNewWishItem(event : KeyboardEvent)
+  {
+    // Enter was not pressed
+    if (event.key != "Enter")
+    {
+      return;
+    }
+
+    this.createNewWishItem();
+  }
+
   createNewWishItem()
   {
+    // No text was entered
+    if (this.newWishText.length == 0)
+    {
+      return;
+    }
+
     this.wishList.push(new WishItem(this.newWishText, false));
     this.newWishText = "";
   }
