@@ -18,4 +18,10 @@ export class AppComponent {
     new WishItem("Start exercising", false),
     new WishItem("Watch movies", false)
   ];
+
+  toggleWishItem(item : WishItem)
+  {
+    item.isDone = !item.isDone;
+    console.log(`Toggle the wish item : ${item.wishText} -> ${item.isDone}`);
+  }
 }
