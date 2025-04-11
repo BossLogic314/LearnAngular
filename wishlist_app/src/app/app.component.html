@@ -5,7 +5,7 @@
 
   <div *ngFor="let item of wishList; index as ii">
     <div class="ckeckboxDiv">
-      <input class="checkbox" type="checkbox" (click)="toggleWishItem(item)" [checked]="item.isDone" [attr.data-index]="ii">
+      <input class="checkbox" type="checkbox" (click)="toggleWishItem(item, wishList)" [checked]="item.isDone" [attr.data-index]="ii">
       {{ item.wishText }}
     </div>
   </div>

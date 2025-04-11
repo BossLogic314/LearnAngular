@@ -19,9 +19,19 @@ export class AppComponent {
     new WishItem("Watch movies", false)
   ];
 
-  toggleWishItem(item : WishItem)
+  toggleWishItem(item : WishItem, items : WishItem[])
   {
-    item.isDone = !item.isDone;
-    console.log(`Toggle the wish item : ${item.wishText} -> ${item.isDone}`);
+    // Unselecting
+    if (item.isDone)
+    {
+      return;
+    }
+
+    // Selecting a different option
+    items.forEach((item) => {
+      item.isDone = false;
+    });
+
+    item.isDone = true;
   }
 }
