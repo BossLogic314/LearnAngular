@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { WishItem } from '../models/WishItem';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ItemsFilterOptions } from '../models/ItemsFilterOptions';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,17 @@ export class AppComponent {
     new WishItem("Watch movies", false)
   ];
 
+  filteredWishList: WishItem[] = [];
+
+  itemsFilterOptions : string[] = ItemsFilterOptions.options;
+  itemsFilterSelected : string = ItemsFilterOptions.options[0];
+
   newWishText : string = "";
+
+  ngOnInit()
+  {
+    this.determineFilteredWishList();
+  }
 
   keyPressedOnCreateNewWishItem(event : KeyboardEvent)
   {
@@ -42,21 +53,35 @@ export class AppComponent {
 
     this.wishList.push(new WishItem(this.newWishText, false));
     this.newWishText = "";
+
+    this.determineFilteredWishList();
   }
 
   toggleWishItem(item : WishItem, items : WishItem[])
   {
-    // Unselecting
-    if (item.isDone)
+    item.isDone = !item.isDone;
+
+    this.determineFilteredWishList();
+  }
+
+  determineFilteredWishList()
+  {
+    switch (this.itemsFilterSelected)
     {
-      return;
+      case "All":
+        this.filteredWishList = this.wishList;
+        break;
+      case "Fulfilled":
+        this.filteredWishList = this.wishList.filter(item => item.isDone);
+        break;
+      case "Unfulfilled":
+        this.filteredWishList = this.wishList.filter(item => !item.isDone);
+        break;
     }
+  }
 
-    // Selecting a different option
-    items.forEach((item) => {
-      item.isDone = false;
-    });
-
-    item.isDone = true;
+  filterChanged()
+  {
+    this.determineFilteredWishList();
   }
 }

@@ -6,7 +6,15 @@
     <button (click)="createNewWishItem()">Create</button>
   </div>
 
-  <div *ngFor="let item of wishList; index as ii">
+  <select [(ngModel)]="itemsFilterSelected" (ngModelChange)="filterChanged()">
+
+    <div *ngFor="let item of itemsFilterOptions" class="optionsDiv">
+      <option>{{item}}</option>
+    </div>
+
+  </select>
+
+  <div *ngFor="let item of filteredWishList; index as ii">
     <div class="ckeckboxDiv">
       <input class="checkbox" type="checkbox" (click)="toggleWishItem(item, wishList)" [checked]="item.isDone" [attr.data-index]="ii">
       {{ item.wishText }}
