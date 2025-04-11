@@ -1,7 +1,10 @@
 <!doctype html>
 <html lang="en">
 <body>
-  <div>Hello</div>
+  <div class="header">
+    <input type="text" [(ngModel)]="newWishText">
+    <button (click)="createNewWishItem()">Create</button>
+  </div>
 
   <div *ngFor="let item of wishList; index as ii">
     <div class="ckeckboxDiv">
