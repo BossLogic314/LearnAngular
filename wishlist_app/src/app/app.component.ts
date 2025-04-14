@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { WishItem } from '../models/WishItem';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ItemsFilterOptions } from '../models/ItemsFilterOptions';
 import { WishListComponent } from "./wish-list/wish-list.component";
 import { NewWishComponent } from "./new-wish/new-wish.component";
 
@@ -24,6 +23,6 @@ export class AppComponent {
 
   addNewWish(wishText : string)
   {
-    this.wishList.push(new WishItem(wishText, false));
+    this.wishList = [...this.wishList, new WishItem(wishText, false)];
   }
 }

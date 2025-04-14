@@ -23,7 +23,7 @@ export class WishListComponent {
 
   newWishText : string = "";
 
-  ngOnInit()
+  ngOnChanges()
   {
     this.determineFilteredWishList();
   }
