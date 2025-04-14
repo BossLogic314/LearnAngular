@@ -1,25 +1,9 @@
 <!doctype html>
 <html lang="en">
 <body>
-  <div class="header">
-    <input type="text" (keypress)="keyPressedOnCreateNewWishItem($event)" [(ngModel)]="newWishText">
-    <button (click)="createNewWishItem()">Create</button>
-  </div>
+  <app-new-wish (newWishAdded)="addNewWish($event)"></app-new-wish>
 
-  <select [(ngModel)]="itemsFilterSelected" (ngModelChange)="filterChanged()">
-
-    <div *ngFor="let item of itemsFilterOptions" class="optionsDiv">
-      <option>{{item}}</option>
-    </div>
-
-  </select>
-
-  <div *ngFor="let item of filteredWishList; index as ii">
-    <div class="ckeckboxDiv">
-      <input class="checkbox" type="checkbox" (click)="toggleWishItem(item, wishList)" [checked]="item.isDone" [attr.data-index]="ii">
-      {{ item.wishText }}
-    </div>
-  </div>
+  <app-wish-list [wishList]="wishList"></app-wish-list>
 
 </body>
 </html>

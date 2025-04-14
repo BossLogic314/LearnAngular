@@ -1,0 +1,13 @@
+<div class="wishListDiv">
+
+    <select [(ngModel)]="itemsFilterSelected" (ngModelChange)="filterChanged()">
+        <div *ngFor="let item of itemsFilterOptions" class="optionsDiv">
+            <option>{{ item }}</option>
+        </div>
+    </select>
+
+    <div *ngFor="let wishItem of filteredWishList; index as ii">
+        <app-wish-item [wishItem]="wishItem" (wishItemChanged)="determineFilteredWishList()"></app-wish-item>
+    </div>
+
+</div>
