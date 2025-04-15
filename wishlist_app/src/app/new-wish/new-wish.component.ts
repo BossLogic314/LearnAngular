@@ -34,5 +34,7 @@ export class NewWishComponent {
     }
 
     this.newWishAdded.emit(this.newWishText);
+
+    this.newWishText = '';
   }
 }
