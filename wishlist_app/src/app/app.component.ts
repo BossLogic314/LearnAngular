@@ -24,8 +24,8 @@ export class AppComponent {
 
   constructor()
   {
-    events.listen('removeItem', (itemToRemove : string) => {
-      console.log(`To remove ${itemToRemove}`);
+    events.listen('removeItem', (wishTextToRemove : string) => {
+      this.wishList = this.wishList.filter(wishItem => wishItem.wishText != wishTextToRemove);
     });
   }
 
