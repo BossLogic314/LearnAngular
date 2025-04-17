@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WishItem } from '../../models/WishItem';
+import events from '../shared/EventService';
 
 @Component({
   selector: 'app-wish-item',
@@ -22,6 +23,6 @@ export class WishItemComponent {
 
   removeWishItem(wishText : string)
   {
-    console.log(`Want to remove the item ${wishText}`);
+    events.emit('removeItem', wishText);
   }
 }
