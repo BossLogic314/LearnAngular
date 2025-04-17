@@ -31,6 +31,15 @@ export class AppComponent {
 
   addNewWish(wishText : string)
   {
+    for (let i = 0; i < this.wishList.length; ++i)
+    {
+      // If the wish text already exists
+      if (this.wishList[i].wishText == wishText)
+      {
+        return;
+      }
+    }
+
     this.wishList = [...this.wishList, new WishItem(wishText, false)];
   }
 }
