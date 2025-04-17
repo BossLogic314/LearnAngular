@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WishListComponent } from "./wish-list/wish-list.component";
 import { NewWishComponent } from "./new-wish/new-wish.component";
-import events from './shared/EventService';
+import { EventService } from './shared/EventService';
 
 @Component({
   selector: 'app-root',
@@ -22,9 +22,9 @@ export class AppComponent {
     new WishItem("Watch movies", false)
   ];
 
-  constructor()
+  constructor(eventService : EventService)
   {
-    events.listen('removeItem', (wishTextToRemove : string) => {
+    eventService.listen('removeItem', (wishTextToRemove : string) => {
       this.wishList = this.wishList.filter(wishItem => wishItem.wishText != wishTextToRemove);
     });
   }

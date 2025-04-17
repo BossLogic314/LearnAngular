@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WishItem } from '../../models/WishItem';
-import events from '../shared/EventService';
+import { EventService } from '../shared/EventService';
 
 @Component({
   selector: 'app-wish-item',
@@ -14,6 +14,8 @@ export class WishItemComponent {
   @Input() wishItem! : WishItem;
   @Output() wishItemChanged : EventEmitter<any> = new EventEmitter<any>();
 
+  constructor(private eventService : EventService) {}
+
   wishItemClicked()
   {
     this.wishItem.isDone = !this.wishItem.isDone;
@@ -23,6 +25,6 @@ export class WishItemComponent {
 
   removeWishItem(wishText : string)
   {
-    events.emit('removeItem', wishText);
+    this.eventService.emit('removeItem', wishText);
   }
 }
