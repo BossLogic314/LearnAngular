@@ -19,4 +19,9 @@ export class WishItemComponent {
 
     this.wishItemChanged.emit();
   }
+
+  removeWishItem(wishText : string)
+  {
+    console.log(`Want to remove the item ${wishText}`);
+  }
 }

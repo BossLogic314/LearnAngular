@@ -1,2 +1,3 @@
 <input class="checkbox" type="checkbox" [checked]="wishItem.isDone" (click)="wishItemClicked()">
 {{ wishItem.wishText }}
+<button (click)="removeWishItem(wishItem.wishText)">x</button>
